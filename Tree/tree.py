@@ -6,6 +6,7 @@ class Node:
 
 
 class Tree:
+    
     def __init__(self):
         self.head = None
 
@@ -16,34 +17,46 @@ class Tree:
             self.head = newNode
             return
         flag = True
+        current = self.head
         while flag:
             if current.data>=data:
-                current = current.left
-                if current == None:
+
+                if current.left == None:
                     newNode = Node(data)
-                    current = newNode
-                    print("Hii1")
+                    current.left = newNode
                     flag = False
                     
                 else:
-                    continue
+                    current = current.left
             elif current.data<data:
-                current = current.right
-                if current == None:
+               
+                if current.right == None:
                     newNode = Node(data)
-                    current = newNode
-                    print("hii2")
+                    current.right = newNode
                     flag = False
 
                 else:
-                    continue
+                    current = current.right
 
-    def inOrderTraverse(self):
-                    
+    def inOrderTraverse(self,node):
+        
+        if node is None:
+            return
+         
+        self.inOrderTraverse(node.left) 
+        print(node.data)
+        self.inOrderTraverse(node.right)
+
+     
+         
 
 newTree = Tree()
 newTree.addData(10)
 newTree.addData(5)
 newTree.addData(20)
+newTree.addData(21)
+
+newTree.addData(8)
+newTree.inOrderTraverse(newTree.head)
 
 
