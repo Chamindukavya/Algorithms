@@ -1,4 +1,4 @@
-array = [1,2,3,4,5]
+array = [1,2,3,4,5]  #array should be sorted
 
 def binarySearch(A,value,start,end):
     if start == end:
