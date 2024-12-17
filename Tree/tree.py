@@ -54,6 +54,14 @@ class Tree:
     def searchValue(self,A,value,start,end):
         binarySearch.binarySearch(A,value,start,end)    
 
+    def findSuccesor(self,node,l3):
+        l4 = []
+        l4 = self.inOrderTraverse(node,l3)
+        minNode = min(l4)
+        #print("min val is ",minNode)
+        return minNode
+        
+
     def deleteNode(self,value,head):
       
         if head == None:
@@ -70,8 +78,27 @@ class Tree:
                 return head.right
             elif head.right == None:
                 return head.left
-            
+            else:
+                array1 = []
+                minNode = self.findSuccesor(head.right,array1)
+                head.data  = minNode
+                head.right = self.deleteNode(minNode,head.right)
+        print(head.data)
         return head    
+
+    def updateValue(self,node,value1,value2):
+
+        if node == None:
+            return
+
+        self.updateValue(node.left,value1,value2)
+        if node.data == value1:
+            node.data = value2
+        self.updateValue(node.right,value1,value2)
+        if node.data == value1:
+            node.data = value2
+
+
 
 newTree = Tree()
 newTree.addData(10)
@@ -79,11 +106,15 @@ newTree.addData(5),
 newTree.addData(20)
 newTree.addData(21)
 newTree.addData(8)
-newTree.deleteNode(5,newTree.head)
-
+newTree.addData(15)
+temp = newTree.deleteNode(10,newTree.head)
+print(temp.data)  #this returns 15 becouse now 10 is replaces by 15
 l2 = []
+#we can't update the tree as we wish. it will change the binary tree structure 
+newTree.updateValue(newTree.head,5,100)
 newTree.inOrderTraverse(newTree.head,l2)
 print(l2)
+
 # newTree.searchValue(l2,120,0,len(l2)-1)
 
 
