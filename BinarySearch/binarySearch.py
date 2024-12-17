@@ -1,4 +1,4 @@
-array = [1,2,3,4,5]  #array should be sorted
+array = [5, 8, 10, 20, 21]  #array should be sorted
 
 def binarySearch(A,value,start,end):
     if start == end:
@@ -17,10 +17,15 @@ def binarySearch(A,value,start,end):
         return
     
     elif(value < A[mid]):
+        if (mid-1)<0:
+            print("Value is not found in the array")
+            return
         binarySearch(A,value,start,mid-1)
 
     elif(value > A[mid]):
         binarySearch(A,value,mid+1,end)
 
-binarySearch(array,8,0,len(array)-1)
+        
+
+binarySearch(array,1,0,len(array)-1)
 
