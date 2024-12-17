@@ -54,8 +54,24 @@ class Tree:
     def searchValue(self,A,value,start,end):
         binarySearch.binarySearch(A,value,start,end)    
 
-     
-         
+    def deleteNode(self,value,head):
+      
+        if head == None:
+            return head
+        
+        if value < head.data:
+            head.left = self.deleteNode(value,head.left)
+        elif value > head.data:
+            head.right = self.deleteNode(value,head.right)
+
+        else:
+
+            if head.left == None:
+                return head.right
+            elif head.right == None:
+                return head.left
+            
+        return head    
 
 newTree = Tree()
 newTree.addData(10)
@@ -63,11 +79,12 @@ newTree.addData(5),
 newTree.addData(20)
 newTree.addData(21)
 newTree.addData(8)
+newTree.deleteNode(5,newTree.head)
 
 l2 = []
 newTree.inOrderTraverse(newTree.head,l2)
 print(l2)
-newTree.searchValue(l2,120,0,len(l2)-1)
+# newTree.searchValue(l2,120,0,len(l2)-1)
 
 
 
