@@ -107,11 +107,11 @@ newTree.addData(20)
 newTree.addData(21)
 newTree.addData(8)
 newTree.addData(15)
-temp = newTree.deleteNode(10,newTree.head)
-print(temp.data)  #this returns 15 becouse now 10 is replaces by 15
+# temp = newTree.deleteNode(10,newTree.head)
+# print(temp.data)  #this returns 15 becouse now 10 is replaces by 15
 l2 = []
-#we can't update the tree as we wish. it will change the binary tree structure 
-newTree.updateValue(newTree.head,5,100)
+# #we can't update the tree as we wish. it will change the binary tree structure 
+# newTree.updateValue(newTree.head,5,100)
 newTree.inOrderTraverse(newTree.head,l2)
 print(l2)
 
