@@ -20,21 +20,25 @@ def buildHeap(A):
     startIndex = (heapSize-1)//2
     for i in range(startIndex,-1,-1):
         maxHeapify(A,i)
-    print("heap",A)
 
+def heapSort(A):
 
-def getMax(A):
-    return A[0]
+    if (len(A) == 0):
+        return
+    if (len(A) == 1):
+        sortedArray.append(A[0])
+        return
 
-def extractMax(A):
-    max = A[0]
-    A[0] = A[len(A)-1]
-    A.pop()
     buildHeap(A)
-    
-    return max
+    arraySize = len(A)
+    while(arraySize > 0):
+        A[arraySize-1],A[0] = A[0],A[arraySize-1]
+        sortedArray[arraySize-1] = A[arraySize-1]
+        arraySize = arraySize -1
+        A.pop()
+        maxHeapify(A,0)
 
+sortedArray = [0]*len(data)
+heapSort(data)
+print(sortedArray)
 
-buildHeap(data)
-print(getMax(data))
-print(extractMax(data))
