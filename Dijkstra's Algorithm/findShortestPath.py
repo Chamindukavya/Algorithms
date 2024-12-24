@@ -1,3 +1,5 @@
+import sys
+
 class Graph:
 
     def __init__(self,numberOfVertices):
@@ -7,9 +9,42 @@ class Graph:
         for i in range(self.V):
             self.g.append([0]*self.V)
 
-    def dijkstra():
-        pass        
 
+    def getMinIndex(self,visited,distance):
+
+        min = sys.maxsize
+        minIndex = 0
+        for i in range(self.V):            
+            temp = distance[i]
+            #print(temp)
+            if(temp<min and visited[i] == False):
+                min = temp
+                minIndex = i
+                #print("minIndex",minIndex)
+
+        return minIndex             
+
+
+    def dijkstra(self,source):
+
+        visited = [False]*self.V
+        distance = [sys.maxsize]*self.V
+        distance[source] = 0
+
+        for i in range(self.V):
+
+            #get the node with minimum distance
+            x = self.getMinIndex(visited,distance)
+            print("X is", x)
+
+            visited[x] = True
+
+            for j in range(self.V):
+                if(visited[j] == False and self.g[x][j] != 0 and distance[j]>=(self.g[x][j] + distance[x])):
+                    distance[j] = self.g[x][j] + distance[x]
+
+
+        print(distance)            
         
 
 if __name__ == "__main__":
@@ -27,4 +62,4 @@ if __name__ == "__main__":
                [0, 0, 2, 0, 0, 0, 6, 7, 0]
                ]
     
-   
+    graph.dijkstra(0)
